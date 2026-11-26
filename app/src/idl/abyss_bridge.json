@@ -1,0 +1,2763 @@
+{
+  "address": "Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX",
+  "metadata": {
+    "name": "abyss_bridge",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Abyss Bridge — MagicBlock ER/VRF/PER glass-bridge game (see SPEC.md)"
+  },
+  "instructions": [
+    {
+      "name": "cash_out",
+      "discriminator": [
+        1,
+        110,
+        57,
+        58,
+        159,
+        157,
+        243,
+        192
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner"
+        },
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_rush_reward",
+      "discriminator": [
+        233,
+        203,
+        66,
+        124,
+        154,
+        126,
+        61,
+        231
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner"
+        },
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "commit_and_undelegate_bridge_pub",
+      "discriminator": [
+        46,
+        120,
+        5,
+        86,
+        133,
+        167,
+        19,
+        94
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "commit_and_undelegate_bridge_sec",
+      "discriminator": [
+        117,
+        204,
+        109,
+        165,
+        157,
+        232,
+        149,
+        254
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_sec",
+          "writable": true
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "commit_and_undelegate_economy",
+      "discriminator": [
+        82,
+        88,
+        67,
+        97,
+        111,
+        251,
+        102,
+        117
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "commit_and_undelegate_player",
+      "discriminator": [
+        107,
+        76,
+        176,
+        95,
+        152,
+        184,
+        182,
+        76
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "docs": [
+            "PlayerState.owner inside the handler."
+          ]
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "consume_vrf_randomness",
+      "discriminator": [
+        51,
+        186,
+        112,
+        30,
+        158,
+        165,
+        198,
+        207
+      ],
+      "accounts": [
+        {
+          "name": "vrf_program_identity",
+          "signer": true,
+          "address": "6bER7MefkEDrsWYQp3u4j93BWhDpsLg6JVhYHW7o3VVv"
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "randomness",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_bridge_sec_permission",
+      "discriminator": [
+        185,
+        122,
+        54,
+        66,
+        18,
+        118,
+        240,
+        146
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "vault_cfg"
+          ]
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_sec"
+        },
+        {
+          "name": "permission",
+          "docs": [
+            "Permission Program); the address is validated in the handler",
+            "and the account is created by the CPI."
+          ],
+          "writable": true
+        },
+        {
+          "name": "permission_program",
+          "address": "ACLseoPoyC3cBqoUtkbjZ4aDrkurZW86v19pXz2XQnp1"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "delegate_bridge_pub",
+      "discriminator": [
+        234,
+        221,
+        94,
+        98,
+        254,
+        126,
+        191,
+        83
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "buffer_bridge_pub",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_pub"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                236,
+                186,
+                8,
+                7,
+                236,
+                58,
+                173,
+                28,
+                81,
+                28,
+                48,
+                137,
+                110,
+                1,
+                8,
+                90,
+                66,
+                154,
+                91,
+                207,
+                74,
+                111,
+                234,
+                38,
+                228,
+                35,
+                50,
+                199,
+                20,
+                52,
+                9,
+                42
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegation_record_bridge_pub",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_pub"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "delegation_metadata_bridge_pub",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_pub"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        },
+        {
+          "name": "owner_program",
+          "address": "Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        },
+        {
+          "name": "validator",
+          "type": {
+            "option": "pubkey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "delegate_bridge_sec",
+      "discriminator": [
+        76,
+        98,
+        255,
+        200,
+        136,
+        129,
+        235,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "buffer_bridge_sec",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_sec"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                236,
+                186,
+                8,
+                7,
+                236,
+                58,
+                173,
+                28,
+                81,
+                28,
+                48,
+                137,
+                110,
+                1,
+                8,
+                90,
+                66,
+                154,
+                91,
+                207,
+                74,
+                111,
+                234,
+                38,
+                228,
+                35,
+                50,
+                199,
+                20,
+                52,
+                9,
+                42
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegation_record_bridge_sec",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_sec"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "delegation_metadata_bridge_sec",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bridge_sec"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "bridge_sec",
+          "writable": true
+        },
+        {
+          "name": "owner_program",
+          "address": "Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        },
+        {
+          "name": "validator",
+          "type": {
+            "option": "pubkey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "delegate_bridge_sec_permission",
+      "discriminator": [
+        32,
+        189,
+        48,
+        205,
+        241,
+        81,
+        130,
+        248
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "vault_cfg"
+          ]
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_sec"
+        },
+        {
+          "name": "permission",
+          "writable": true
+        },
+        {
+          "name": "buffer_permission",
+          "docs": [
+            "Permission Program, the permission account's owner program)."
+          ],
+          "writable": true
+        },
+        {
+          "name": "delegation_record_permission",
+          "docs": [
+            "the Delegation Program)."
+          ],
+          "writable": true
+        },
+        {
+          "name": "delegation_metadata_permission",
+          "docs": [
+            "permission] under the Delegation Program)."
+          ],
+          "writable": true
+        },
+        {
+          "name": "permission_program",
+          "address": "ACLseoPoyC3cBqoUtkbjZ4aDrkurZW86v19pXz2XQnp1"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "validator",
+          "docs": [
+            "every other account is delegated to (same-validator rule)."
+          ],
+          "optional": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "delegate_economy",
+      "discriminator": [
+        174,
+        200,
+        202,
+        180,
+        63,
+        75,
+        92,
+        43
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "buffer_economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "economy"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                236,
+                186,
+                8,
+                7,
+                236,
+                58,
+                173,
+                28,
+                81,
+                28,
+                48,
+                137,
+                110,
+                1,
+                8,
+                90,
+                66,
+                154,
+                91,
+                207,
+                74,
+                111,
+                234,
+                38,
+                228,
+                35,
+                50,
+                199,
+                20,
+                52,
+                9,
+                42
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegation_record_economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "economy"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "delegation_metadata_economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "economy"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_program",
+          "address": "Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "validator",
+          "type": {
+            "option": "pubkey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "delegate_player",
+      "discriminator": [
+        235,
+        159,
+        245,
+        102,
+        161,
+        199,
+        254,
+        89
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "buffer_player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                236,
+                186,
+                8,
+                7,
+                236,
+                58,
+                173,
+                28,
+                81,
+                28,
+                48,
+                137,
+                110,
+                1,
+                8,
+                90,
+                66,
+                154,
+                91,
+                207,
+                74,
+                111,
+                234,
+                38,
+                228,
+                35,
+                50,
+                199,
+                20,
+                52,
+                9,
+                42
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegation_record_player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "delegation_metadata_player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "payer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_program",
+          "address": "Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "validator",
+          "type": {
+            "option": "pubkey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "discriminator": [
+        242,
+        35,
+        198,
+        137,
+        82,
+        225,
+        242,
+        182
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "name": "user_ata",
+          "writable": true
+        },
+        {
+          "name": "vault_ata",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "session_key",
+          "type": "pubkey"
+        },
+        {
+          "name": "session_expiry",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "enter_bridge",
+      "discriminator": [
+        242,
+        223,
+        63,
+        202,
+        11,
+        5,
+        168,
+        31
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner"
+        },
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "finalize_rush",
+      "discriminator": [
+        237,
+        183,
+        213,
+        79,
+        4,
+        52,
+        234,
+        31
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "rush_bridge_pub"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "init_bridges",
+      "discriminator": [
+        217,
+        238,
+        34,
+        69,
+        243,
+        28,
+        15,
+        111
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_pub_0",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec_0",
+          "writable": true
+        },
+        {
+          "name": "bridge_pub_1",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec_1",
+          "writable": true
+        },
+        {
+          "name": "bridge_pub_2",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec_2",
+          "writable": true
+        },
+        {
+          "name": "bridge_pub_3",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec_3",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_protocol",
+      "discriminator": [
+        188,
+        233,
+        252,
+        106,
+        134,
+        146,
+        202,
+        91
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "name": "vault_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault_cfg"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "usdc_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "authority_ata",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "event_target",
+          "type": "u64"
+        },
+        {
+          "name": "rush_duration_secs",
+          "type": "i64"
+        },
+        {
+          "name": "initial_house_reserve",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "process_undelegation",
+      "discriminator": [
+        196,
+        28,
+        41,
+        206,
+        48,
+        37,
+        51,
+        167
+      ],
+      "accounts": [
+        {
+          "name": "base_account",
+          "writable": true
+        },
+        {
+          "name": "buffer",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  110,
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  101,
+                  45,
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "base_account"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                181,
+                183,
+                0,
+                225,
+                242,
+                87,
+                58,
+                192,
+                204,
+                6,
+                34,
+                1,
+                52,
+                74,
+                207,
+                151,
+                184,
+                53,
+                6,
+                235,
+                140,
+                229,
+                25,
+                152,
+                204,
+                98,
+                126,
+                24,
+                147,
+                128,
+                167,
+                62
+              ]
+            }
+          }
+        },
+        {
+          "name": "payer",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "account_seeds",
+          "type": {
+            "vec": "bytes"
+          }
+        }
+      ]
+    },
+    {
+      "name": "request_bridge_vrf",
+      "discriminator": [
+        5,
+        195,
+        47,
+        70,
+        202,
+        107,
+        47,
+        234
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bridge_pub"
+        },
+        {
+          "name": "bridge_sec"
+        },
+        {
+          "name": "oracle_queue",
+          "docs": [
+            "queues inside the handler."
+          ],
+          "writable": true
+        },
+        {
+          "name": "program_identity",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  100,
+                  101,
+                  110,
+                  116,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "vrf_program",
+          "address": "Vrf1RNUjXmQGjmQrQLvJHs9SNkvDJEsRVFPkfSQUwGz"
+        },
+        {
+          "name": "slot_hashes",
+          "address": "SysvarS1otHashes111111111111111111111111111"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "diff",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "seed_house",
+      "discriminator": [
+        229,
+        47,
+        19,
+        196,
+        159,
+        230,
+        135,
+        101
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_ata",
+          "writable": true
+        },
+        {
+          "name": "vault_ata",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "step_tile",
+      "discriminator": [
+        50,
+        40,
+        119,
+        16,
+        126,
+        191,
+        126,
+        125
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner"
+        },
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "economy",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  99,
+                  111,
+                  110,
+                  111,
+                  109,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bridge_pub",
+          "writable": true
+        },
+        {
+          "name": "bridge_sec",
+          "writable": true
+        },
+        {
+          "name": "rush_bridge_sec",
+          "docs": [
+            "The Rush bridge secret, so a fall can flag its VRF reseed when",
+            "the fall triggers Resurrection Rush. Optional: when the player",
+            "is ON the Rush bridge (diff == 3) this is the same account as",
+            "bridge_sec, and Anchor rejects duplicate mutable accounts —",
+            "clients pass None there (the trigger only fires on falls in",
+            "modes 0..2 anyway)."
+          ],
+          "writable": true,
+          "optional": true
+        },
+        {
+          "name": "rush_bridge_pub",
+          "docs": [
+            "Public mirror of the Rush bridge, kept in sync with",
+            "rush_bridge_sec (Batch 2 patch). Optional for the same",
+            "duplicate-account reason as rush_bridge_sec."
+          ],
+          "writable": true,
+          "optional": true
+        }
+      ],
+      "args": [
+        {
+          "name": "col",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_l1",
+      "discriminator": [
+        212,
+        140,
+        56,
+        231,
+        6,
+        1,
+        56,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_cfg",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  102,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "usdc_mint"
+        },
+        {
+          "name": "vault_ata",
+          "writable": true
+        },
+        {
+          "name": "user_ata",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BridgePublic",
+      "discriminator": [
+        49,
+        226,
+        179,
+        16,
+        83,
+        224,
+        142,
+        33
+      ]
+    },
+    {
+      "name": "BridgeSecret",
+      "discriminator": [
+        165,
+        237,
+        123,
+        209,
+        41,
+        114,
+        117,
+        208
+      ]
+    },
+    {
+      "name": "GlobalEconomy",
+      "discriminator": [
+        236,
+        112,
+        160,
+        228,
+        16,
+        26,
+        21,
+        3
+      ]
+    },
+    {
+      "name": "PlayerState",
+      "discriminator": [
+        56,
+        3,
+        60,
+        86,
+        174,
+        16,
+        244,
+        195
+      ]
+    },
+    {
+      "name": "VaultConfig",
+      "discriminator": [
+        99,
+        86,
+        43,
+        216,
+        184,
+        102,
+        119,
+        77
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6001,
+      "name": "Unauthorized",
+      "msg": "Signer is neither the owner nor a live session key"
+    },
+    {
+      "code": 6002,
+      "name": "SessionExpired",
+      "msg": "Session key has expired"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidDifficulty",
+      "msg": "Invalid difficulty"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidColumn",
+      "msg": "Invalid column for this bridge"
+    },
+    {
+      "code": 6005,
+      "name": "AlreadyOnBridge",
+      "msg": "Player is already on a bridge"
+    },
+    {
+      "code": 6006,
+      "name": "NotOnBridge",
+      "msg": "Player is not on a bridge"
+    },
+    {
+      "code": 6007,
+      "name": "BridgeSeedPending",
+      "msg": "Bridge layout is not seeded yet (VRF pending)"
+    },
+    {
+      "code": 6008,
+      "name": "BridgeRoundReset",
+      "msg": "Bridge round was reset by another finisher; cash out to exit"
+    },
+    {
+      "code": 6009,
+      "name": "InsufficientBalance",
+      "msg": "Insufficient PlayerState balance"
+    },
+    {
+      "code": 6010,
+      "name": "InsufficientPasses",
+      "msg": "No Fallen Pass available"
+    },
+    {
+      "code": 6011,
+      "name": "NoBlindSteps",
+      "msg": "Cash out requires at least 1 blind step"
+    },
+    {
+      "code": 6012,
+      "name": "BridgeFull",
+      "msg": "Bridge runner slots are full"
+    },
+    {
+      "code": 6013,
+      "name": "RushNotActive",
+      "msg": "Resurrection Rush is not active"
+    },
+    {
+      "code": 6014,
+      "name": "RushStillActive",
+      "msg": "Resurrection Rush is still running"
+    },
+    {
+      "code": 6015,
+      "name": "NotRushWinner",
+      "msg": "Player did not win the settled Rush"
+    },
+    {
+      "code": 6016,
+      "name": "AlreadyClaimed",
+      "msg": "Rush reward already claimed"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidOracleQueue",
+      "msg": "Oracle queue is not a recognised MagicBlock VRF queue"
+    },
+    {
+      "code": 6018,
+      "name": "PlayerOnBridge",
+      "msg": "Player is on a bridge; cash out or finish first"
+    },
+    {
+      "code": 6019,
+      "name": "DevSeedDisabled",
+      "msg": "Dev seed helper is disabled in this build"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidPermissionAccount",
+      "msg": "Permission account does not match the expected Permission PDA"
+    }
+  ],
+  "types": [
+    {
+      "name": "BridgePublic",
+      "docs": [
+        "Public board state (frontend-subscribable). Seeds:",
+        "`[\"bridge_pub\", &[diff]]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "diff",
+            "type": "u8"
+          },
+          {
+            "name": "cols",
+            "type": "u8"
+          },
+          {
+            "name": "rows",
+            "type": "u8"
+          },
+          {
+            "name": "round_id",
+            "type": "u32"
+          },
+          {
+            "name": "vrf_pending",
+            "docs": [
+              "Mirror of BridgeSecret.vrf_pending (Batch 2 micro-patch): the",
+              "frontend must NEVER read BridgeSecret (PER will lock it in",
+              "Batch 3), so the shuffle state is published here. BridgeSecret",
+              "remains the contract-side source of truth; every write path",
+              "updates both."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "revealed_safe_col",
+            "docs": [
+              "Per-row revealed safe column; 255 = hidden."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "broken_mask",
+            "docs": [
+              "Per-row bitmask of broken (trap) columns."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "active_runners",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "RunnerSlot"
+                  }
+                },
+                8
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "BridgeSecret",
+      "docs": [
+        "Hidden safe-tile answers. PER/TEE-locked in Batch 3. Seeds:",
+        "`[\"bridge_sec\", &[diff]]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "diff",
+            "type": "u8"
+          },
+          {
+            "name": "round_id",
+            "type": "u32"
+          },
+          {
+            "name": "safe_col",
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "vrf_pending",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalEconomy",
+      "docs": [
+        "Shared economy ledger, delegated to the ER once and resident there.",
+        "Seeds: `[\"economy\"]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "house_reserve_bal",
+            "type": "u64"
+          },
+          {
+            "name": "event_vault_bal",
+            "type": "u64"
+          },
+          {
+            "name": "treasury_bal",
+            "type": "u64"
+          },
+          {
+            "name": "event_target",
+            "type": "u64"
+          },
+          {
+            "name": "rush_duration_secs",
+            "type": "i64"
+          },
+          {
+            "name": "rush_active",
+            "type": "bool"
+          },
+          {
+            "name": "rush_round_id",
+            "type": "u32"
+          },
+          {
+            "name": "rush_end_ts",
+            "type": "i64"
+          },
+          {
+            "name": "rush_prize_pool",
+            "type": "u64"
+          },
+          {
+            "name": "rush_highest_row",
+            "type": "u8"
+          },
+          {
+            "name": "rush_highest_count",
+            "type": "u16"
+          },
+          {
+            "name": "rush_finishers_count",
+            "type": "u16"
+          },
+          {
+            "name": "settled_rush_id",
+            "type": "u32"
+          },
+          {
+            "name": "settled_winning_row",
+            "type": "u8"
+          },
+          {
+            "name": "settled_payout_per_winner",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerState",
+      "docs": [
+        "Per-player state, the only account that travels L1 <-> ER.",
+        "Seeds: `[\"player\", owner]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "balance",
+            "docs": [
+              "Internal Mock USDC ledger balance (backed by VaultConfig.vault_ata)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "fallen_passes",
+            "type": "u16"
+          },
+          {
+            "name": "is_on_bridge",
+            "type": "bool"
+          },
+          {
+            "name": "active_diff",
+            "type": "u8"
+          },
+          {
+            "name": "entry_round_id",
+            "type": "u32"
+          },
+          {
+            "name": "current_row",
+            "type": "u8"
+          },
+          {
+            "name": "blind_steps",
+            "type": "u8"
+          },
+          {
+            "name": "last_rush_id",
+            "docs": [
+              "Last Rush the player entered."
+            ],
+            "type": "u32"
+          },
+          {
+            "name": "last_rush_best_row",
+            "docs": [
+              "Best rows-completed in that Rush (double-count watermark)."
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "rush_claimed_id",
+            "docs": [
+              "Rush id whose reward this player already claimed."
+            ],
+            "type": "u32"
+          },
+          {
+            "name": "session_key",
+            "docs": [
+              "Native session key (Batch 1 rule 1): an ephemeral browser",
+              "keypair registered by the owner at deposit time."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "session_expiry",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RunnerSlot",
+      "docs": [
+        "Lightweight visual snapshot of one runner on a bridge."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pubkey",
+            "type": "pubkey"
+          },
+          {
+            "name": "row",
+            "type": "u8"
+          },
+          {
+            "name": "col",
+            "type": "u8"
+          },
+          {
+            "name": "blind_steps",
+            "type": "u8"
+          },
+          {
+            "name": "active",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultConfig",
+      "docs": [
+        "L1 protocol configuration. Seeds: `[\"vault_cfg\"]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "usdc_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "vault_ata",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

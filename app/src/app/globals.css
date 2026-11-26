@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background: #050810;
+  color: #e2e8f0;
+}
+
+/* Runner hop: re-triggered by keying the avatar on (row, col). */
+@keyframes hop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-18px) scale(1.06);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+.avatar-hop {
+  animation: hop 0.45s cubic-bezier(0.34, 1.4, 0.44, 1);
+}
+
+/* Subtle screen shake when glass breaks. */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px) rotate(-0.3deg); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+.stage-shake {
+  animation: shake 0.45s ease;
+}
+
+/* Shattered tile texture. */
+.tile-broken {
+  background:
+    repeating-linear-gradient(
+      47deg,
+      rgba(244, 63, 94, 0.16) 0 2px,
+      transparent 2px 9px
+    ),
+    repeating-linear-gradient(
+      -32deg,
+      rgba(244, 63, 94, 0.1) 0 2px,
+      transparent 2px 11px
+    ),
+    rgba(80, 10, 25, 0.35);
+}
+
+/* Event vault progress bar glide. */
+.event-bar {
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Resurrection Rush tab glow. */
+@keyframes rushPulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(244, 63, 94, 0.45); }
+  50% { box-shadow: 0 0 20px rgba(244, 63, 94, 0.85); }
+}
+.rush-glow {
+  animation: rushPulse 1.6s ease-in-out infinite;
+}
+
+/* VRF shuffle banner pulse. */
+@keyframes vrfPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.vrf-banner {
+  animation: vrfPulse 1.2s ease-in-out infinite;
+}
+
+/* Keep the wallet-adapter button compact in the HUD. */
+.wallet-adapter-button {
+  height: 36px !important;
+  font-size: 13px !important;
+  border-radius: 10px !important;
+}

@@ -1,0 +1,33 @@
+[package]
+name = "abyss-bridge"
+version = "0.1.0"
+description = "Abyss Bridge — MagicBlock ER/VRF/PER glass-bridge game (see SPEC.md)"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "abyss_bridge"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+# LOCAL TESTS ONLY: compiles in the dev_seed_bridge helper so TS tests
+# can install deterministic bridge layouts without a VRF oracle. The
+# default build (and the shipped IDL) never contains it.
+local-test = []
+
+[dependencies]
+anchor-lang = { version = "1.2.2", features = ["init-if-needed"] }
+anchor-spl = "1.2.2"
+# MagicBlock Ephemeral Rollups SDK — 0.18.x line pinned for the public
+# TEE/PER endpoints per docs.magicblock.gg (access-control feature gates
+# the PER permission CPIs used in Batch 3).
+ephemeral-rollups-sdk = { version = "0.18", features = ["anchor", "access-control"] }
+# MagicBlock Solana VRF SDK. NOTE: the GitHub README's 0.3.0 is yanked on
+# crates.io; the crate now releases in lockstep with the ER SDK version
+# lines, so the PER line uses 0.18 here too.
+ephemeral-vrf-sdk = { version = "0.18", features = ["anchor"] }

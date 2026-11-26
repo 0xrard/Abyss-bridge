@@ -1,0 +1,14 @@
+.anchor
+target
+node_modules
+test-ledger
+app/.next
+app/node_modules
+
+scripts/.devnet-state.json
+.env.local
+app/.env.local
+
+# delivery copies of env files must never be committed
+app/env.local.txt
+*.local.txt
