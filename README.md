@@ -10,7 +10,7 @@ seeded by VRF, and every fall feeds a shared Event Vault — 70% Reserve /
 **Live demo: https://abyss-bridge-beige.vercel.app** (Solana **devnet** — play
 money only, no real funds are ever involved)
 
-**Demo video:** [DEMO_VIDEO_URL]
+**Demo video:** https://youtu.be/t2pucq8C0XA
 
 - Program: [`Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX`](https://explorer.solana.com/address/Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX?cluster=devnet) (devnet)
 - Mock USDC mint: [`4GP8vbT9hrHfMmoJnfXeErFAAEL54UPfSRqZXC4Q79pi`](https://explorer.solana.com/address/4GP8vbT9hrHfMmoJnfXeErFAAEL54UPfSRqZXC4Q79pi?cluster=devnet) (6 decimals)
