@@ -10,10 +10,14 @@ seeded by VRF, and every fall feeds a shared Event Vault — 70% Reserve /
 **Live demo: https://abyss-bridge-beige.vercel.app** (Solana **devnet** — play
 money only, no real funds are ever involved)
 
-- Program: `Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX` (devnet)
-- Mock USDC mint: `4GP8vbT9hrHfMmoJnfXeErFAAEL54UPfSRqZXC4Q79pi` (6 decimals)
+**Demo video:** [DEMO_VIDEO_URL]
+
+- Program: [`Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX`](https://explorer.solana.com/address/Gw5k91LH43GRxwS335Bnw8o3BNWF16Lkm57LwHypF9XX?cluster=devnet) (devnet)
+- Mock USDC mint: [`4GP8vbT9hrHfMmoJnfXeErFAAEL54UPfSRqZXC4Q79pi`](https://explorer.solana.com/address/4GP8vbT9hrHfMmoJnfXeErFAAEL54UPfSRqZXC4Q79pi?cluster=devnet) (6 decimals)
 - Ephemeral Rollup: `https://devnet-as.magicblock.app` (validator
   `MAS1Dt9qreoRMQ14YQuhg8UTZMMzDdKhmkZMECCzk57`)
+
+![Abyss Bridge gameplay](docs/screenshots/gameplay.png)
 
 ## The game
 
@@ -28,11 +32,13 @@ money only, no real funds are ever involved)
 - **Cash out** any time after at least one blind step to collect
   `entry × multiplier` (capped by the house reserve). Fall, and your entry
   feeds the Event Vault split above.
-- **Resurrection Rush:** falls fill a Rush pool. When it triggers, fallen
-  players re-enter with passes and race the same bridge; the best rows are
-  rewarded from the pool. Rewards are pull-based (`finalize_rush` +
-  `claim_rush_reward`) — claim while your account is delegated, *before* you
-  withdraw.
+- **Resurrection Rush:** every fall mints a **Fallen Pass** and sends 25% of
+  the stake to one global Event Vault shared across Easy, Normal, and Hard. On
+  devnet, the vault triggers every **4 falls ($1.00 USDC)** and opens a
+  **45-second** free-entry race (burns 1 Fallen Pass, 0 USDC). Cash-out is
+  disabled by design during Rush — finish or reach the furthest row, then
+  collect your share via pull-based `finalize_rush` + `claim_rush_reward`
+  while your account is still delegated.
 
 ## Play it now (judges: follow this order)
 
@@ -54,6 +60,11 @@ money only, no real funds are ever involved)
 7. **CASH OUT** after ≥1 blind step, or keep walking. When you are done,
    click **Withdraw (owner)** — this commits your state back to L1, waits for
    settlement, and returns your in-game balance to your wallet.
+
+Testing solo? The **[Demo Mode: Simulate 2 Bots]** toggle adds two simulated
+players so you can see shared-bridge dynamics (reveals, falls, the ticker).
+It is a local visual overlay only — every bot tile and ticker line is tagged
+**[SIM]**, and bots never write any on-chain state.
 
 ## Troubleshooting
 
@@ -85,10 +96,12 @@ money only, no real funds are ever involved)
   per row), `GlobalEconomy` (reserve / event / treasury balances, Rush
   state), `PlayerState` (balance, position, blind steps, native session key
   + expiry).
-- **VRF:** stepping onto an unrevealed bridge requests a reseed from the
-  Ephemeral VRF oracle; the callback writes the new layout into
-  `BridgeSecret` and bumps the round. Play pauses cleanly while
-  `vrf_pending` is set.
+- **VRF:** when a player finishes the final row of a bridge — or when falls
+  trigger Resurrection Rush — the program sets `vrf_pending = true`. Any
+  client (auto-dispatched by the UI using the session key) calls the
+  permissionless `request_bridge_vrf` instruction on the Ephemeral VRF oracle;
+  the callback writes the new layout into `BridgeSecret`, clears revealed
+  tiles, and bumps the round. Play pauses cleanly while `vrf_pending` is set.
 - **Session keys:** the browser generates an ephemeral keypair per wallet,
   registered on `PlayerState` at deposit time with a 12-hour expiry. The
   owner wallet can always act; the session key can only play.
@@ -110,6 +123,9 @@ was designed for exactly that migration.
 - `app/` — the Next.js frontend (this is what is deployed to Vercel).
 - `scripts/` — bootstrap, validator migration, smoke tests, faucet keypair
   tooling.
+- `tests/` — LiteSVM end-to-end suite (13 tests), math tests, and a custom
+  local VRF stub (`tests/vrf-stub/`) used to reproduce and verify VRF
+  dispatch/callback behavior offline.
 - `SPEC.md` — the design specification the build follows.
 
 ## Run it locally
@@ -131,6 +147,8 @@ wallet that holds anything of value, and on Vercel it should be stored as a
 ## Verification
 
 - Local program test suite: 16/16 passing; TypeScript e2e (LiteSVM): 13/13.
+- Devnet program builds use `cargo build-sbf --arch v1` — devnet rejects
+  SBPF v3 output (the `anchor build` default).
 - Live devnet smoke test (25 Nov 2026): deposit+delegate in one transaction
   → session-key gameplay on the ER → cash out at exactly 1.65× for one blind
   step → settle to L1 → withdraw, token balances reconciled to the cent.
